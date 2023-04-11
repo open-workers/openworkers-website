@@ -7,9 +7,9 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "inlineTemplate": true,
-          "inlineStyle": true,
-          "skipTests": true
+          "inlineTemplate": false,
+          "skipTests": true,
+          "style": "none"
         },
         "@schematics/angular:class": {
           "skipTests": true
@@ -43,17 +43,18 @@
             "outputPath": "dist/app",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "docs",
+                "output": "./static/docs"
+              }
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["src/styles.css", "node_modules/highlight.js/styles/github.css"],
             "scripts": []
           },
           "configurations": {
@@ -103,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

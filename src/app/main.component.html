@@ -1,0 +1,16 @@
+<nav class="fixed w-full border-b shadow-sm bg-white">
+  <div class="flex h-16 justify-between items-center mx-auto max-w-8xl px-2 xs:px-4 sm:px-6">
+    <div class="flex gap-2 flex-1">
+      <a routerLink="/"> Home </a>
+    </div>
+
+    <div class="flex gap-2 font-semibold">
+      <a class="link" routerLink="/docs" routerLinkActive="active"> Docs </a>
+      <a class="link" [href]="loginUrl" target="_blank">Login</a>
+    </div>
+  </div>
+</nav>
+
+<div class="pt-20">
+  <router-outlet></router-outlet>
+</div>

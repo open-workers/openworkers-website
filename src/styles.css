@@ -1,1 +1,124 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #1f2937;
+  --border-color: #e5e7eb;
+  --bg-primary: #ffffff;
+}
+
+::-webkit-scrollbar {
+  height: 1rem;
+  width: .5rem
+}
+
+::-webkit-scrollbar:horizontal {
+  height: .5rem;
+  width: 1rem
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 9999px
+}
+
+::-webkit-scrollbar-thumb {
+  --tw-border-opacity: 1;
+  background-color: rgba(217,217,227,.8);
+  border-color: rgba(255,255,255,var(--tw-border-opacity));
+  border-radius: 9999px;
+  border-width: 1px
+}
+
+::-webkit-scrollbar-thumb:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(236,236,241,var(--tw-bg-opacity))
+}
+
+@layer base {
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+  h4 {
+    @apply text-xl;
+  }
+  h5 {
+    @apply text-lg;
+  }
+
+  html {
+    /* absolute scrollbar */
+    overflow-y: scroll;
+    overflow-y: overlay;
+  }
+
+  input,
+  select,
+  textarea {
+    @apply outline-none;
+  }
+
+  textarea {
+    @apply min-h-[4rem];
+  }
+
+  input,
+  select {
+    @apply h-8;
+  }
+
+  textarea,
+  fieldset > label {
+    display: block;
+  }
+
+  select option:disabled {
+    @apply text-gray-400;
+  }
+
+  body {
+    color: var(--color-primary);
+    background-color: var(--bg-primary);
+  }
+
+  svg {
+    path {
+      @apply fill-current;
+    }
+  }
+
+  app-root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@layer utilities {
+  nav .link {
+    @apply text-slate-700 hover:text-blue-500 ;
+  }
+
+  nav .link.active {
+    @apply text-blue-500;
+  }
+
+  aside.menu  li > a {
+    @apply rounded p-2 hover:bg-gray-100 hover:text-slate-800;
+  }
+
+  aside.menu  li > a.active {
+    @apply text-blue-500 font-semibold bg-blue-50;
+  }
+
+  .markdown {
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "editor.formatOnSave": true,
+  "cSpell.words": ["Rehype"],
+  "files.associations": {
+    "styles.scss": "tailwindcss"
+  },
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
+    "scss": "scss"
+  },
+  "css.validate": false,
+  "tailwindCSS.emmetCompletions": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  }
+}
