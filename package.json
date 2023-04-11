@@ -6,7 +6,7 @@
     "dev": "ng serve --host 127.0.0.1 --port 4300",
     "dev:prod": "ng serve --host 127.0.0.1 --port 4300 --configuration production",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development"
   },
   "private": true,
