@@ -22,13 +22,20 @@ interface TocItem {
 }
 
 /**
- * Extract TocItem[] from AST Structure: ol -> li -> a -> text (name)
+ * Extracts the table of contents from the rehype-toc tree.
  */
-function tocValuesToJson(list: ListNode): TocItem[] | null {
-  if (!list.children || list.children.length < 2) {
+function tocValuesToJson(list: ListNode, depth = 0): TocItem[] | null {
+  // If there are no children, we can return null.
+  if (!list.children?.length) {
     return null;
   }
 
+  // If there is only one top level item, we can skip the top level and just use the children.
+  if (!depth && list.children.length === 1) {
+    return tocValuesToJson(list.children[0].children[1] as ListNode, depth + 1);
+  }
+
+  // Otherwise, we need to map the children to the TocItem[] structure.
   return list.children.map((li) => {
     const listItem = li.children[0] as ListItemNode;
     const subList = (li.children[1] as ListNode) ?? null;
@@ -37,7 +44,7 @@ function tocValuesToJson(list: ListNode): TocItem[] | null {
     return {
       name: text.value,
       fragment: listItem.properties['href']?.replace('#', '') ?? '',
-      children: subList && tocValuesToJson(subList)
+      children: subList && tocValuesToJson(subList, depth + 1)
     };
   });
 }
