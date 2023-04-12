@@ -15,7 +15,6 @@
   <router-outlet></router-outlet>
 </div>
 
-<div class="absolute bottom-0 p-2">
-  build:
-  <a [href]="projectUrl + buildId" target="_blank">{{ buildId.slice(0, 7) }}</a>
+<div class="text-slate-500 absolute bottom-0 right-2 p-2">
+  <a class="hover:text-blue-500" [href]="projectUrl + buildId" target="_blank">build {{ buildId.slice(0, 7) }}</a>
 </div>

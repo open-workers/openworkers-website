@@ -11,7 +11,7 @@
     <aside class="toc max-w-[20rem] min-w-[14rem] p-4 hidden md:block empty:hidden">
       <div class="fixed">
         <div *ngIf="toc$ | async as root">
-          <h5 class="text-slate-900 font-semibold mb-4 text-sm leading-6">On this page</h5>
+          <div class="text-slate-900 mb-3 font-semibold text-sm leading-6">On this page</div>
 
           <ng-container *ngTemplateOutlet="tocRoot; context: { root }" />
         </div>
