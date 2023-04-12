@@ -31,7 +31,12 @@ function tocValuesToJson(list: ListNode, depth = 0): TocItem[] | null {
   }
 
   // If there is only one top level item, we can skip the top level and just use the children (if any).
-  if (!depth && list.children.length === 1 && list.children[0].children?.length) {
+  if (!depth && list.children.length === 1) {
+    // If there are no children, we can return null.
+    if (!list.children[0].children[1]) {
+      return null;
+    }
+
     return tocValuesToJson(list.children[0].children[1] as ListNode, depth + 1);
   }
 
