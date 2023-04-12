@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { loginUrl } from '~/environment';
+import { loginUrl, buildId } from '~/environment';
 
 @Component({
   selector: 'main',
@@ -7,4 +7,5 @@ import { loginUrl } from '~/environment';
 })
 export class MainComponent {
   public readonly loginUrl = loginUrl;
+  public readonly buildId = buildId;
 }
