@@ -9,10 +9,21 @@
     <article class="overflow-auto p-4 flex-1" [innerHTML]="markdown$ | async"></article>
 
     <aside class="toc max-w-[20rem] min-w-[14rem] p-4 hidden md:block empty:hidden">
-      <div class="fixed" *ngIf="toc$ | async as root">
-        <h5 class="text-slate-900 font-semibold mb-4 text-sm leading-6 dark:text-slate-100">On this page</h5>
+      <div class="fixed">
+        <div *ngIf="toc$ | async as root">
+          <h5 class="text-slate-900 font-semibold mb-4 text-sm leading-6">On this page</h5>
 
-        <ng-container *ngTemplateOutlet="tocRoot; context: { root }" />
+          <ng-container *ngTemplateOutlet="tocRoot; context: { root }" />
+        </div>
+
+        <div class="separator my-6"></div>
+
+        <div *ngIf="ghSource$ | async as ghSource">
+          <a class="flex items-center" [href]="ghSource" target="_blank" rel="noopener noreferrer">
+            <ng-container *ngTemplateOutlet="ghLogo"></ng-container>
+            <span class="text-slate-600 hover:text-slate-900 text-sm leading-6"> Edit this page </span>
+          </a>
+        </div>
       </div>
     </aside>
   </div>

@@ -10,7 +10,7 @@ import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { ListNode, TextNode, ListItemNode } from 'rehype-toc';
-import { map, mergeMap, Observable, ReplaySubject } from 'rxjs';
+import { map, mergeMap, Observable, ReplaySubject, tap } from 'rxjs';
 import { unified } from 'unified';
 import { IHydrateMarkdownMeta } from '~/app/types/markdown';
 import { DocsConfig } from './tokens';
@@ -54,12 +54,26 @@ function tocValuesToJson(list: ListNode, depth = 0): TocItem[] | null {
   });
 }
 
+/**
+ * Flattens the config to a single level.
+ */
+function flattenConfig(config: IHydrateMarkdownMeta[]): IHydrateMarkdownMeta[] {
+  return config.reduce<IHydrateMarkdownMeta[]>((acc, { children, ...rest }) => {
+    if (children) {
+      return [...acc, ...flattenConfig(children), rest];
+    }
+
+    return [...acc, rest];
+  }, []);
+}
+
 @Component({ templateUrl: './docs.page.html' })
 export class DocsPage {
   markdown$: Observable<SafeHtml>;
 
   public readonly toc$: Observable<TocItem[] | null>;
   public readonly fragment$: Observable<string | null>;
+  public readonly ghSource$: Observable<string | null>;
 
   constructor(
     route: ActivatedRoute,
@@ -94,5 +108,13 @@ export class DocsPage {
     );
 
     this.markdown$ = markdown$.pipe(map((document) => sanitizer.bypassSecurityTrustHtml(document.toString())));
+
+    // Current config item.
+    const config$ = route.url.pipe(
+      map((url) => url.map((u) => u.path).join('/')),
+      map((url) => flattenConfig(config).find(({ path }) => path.includes(url)) ?? null)
+    );
+
+    this.ghSource$ = config$.pipe(map((config) => config?.ghSource ?? null));
   }
 }

@@ -8,11 +8,12 @@ import { MarkdownService } from './services/markdown.service';
 import { docsUrl } from '~/environments/environment';
 import { FullPage } from './components/full/full.page';
 
-function hydrateMarkdownMeta(meta: IMarkdownMeta[], parentPath: string): IHydrateMarkdownMeta[] {
+function hydrateMarkdownMeta(meta: IMarkdownMeta[], parentPath: string, ghSource?: string): IHydrateMarkdownMeta[] {
   return meta.map(({ name, path, children }) => ({
     name,
     path: `${parentPath}/${path === 'index' ? '' : path}`,
-    children: children && hydrateMarkdownMeta(children, `${parentPath}/${path}`)
+    ghSource: ghSource && `${ghSource}/${path}.md`,
+    children: children && hydrateMarkdownMeta(children, `${parentPath}/${path}`, ghSource)
   }));
 }
 
@@ -26,7 +27,7 @@ function extractMarkdownRoutes(config: IMarkdownMeta[], parentPath = ''): string
   );
 }
 
-function createRoutes(basePath: string, sourceUrl: string, config: IMarkdownMeta[]): Routes {
+function createRoutes(basePath: string, sourceUrl: string, config: IMarkdownMeta[], ghRoot?: string): Routes {
   return extractMarkdownRoutes(config).map((path) => ({
     path: (basePath + path).replace(/\/index$/, ''),
     component: DocsPage,
@@ -34,7 +35,7 @@ function createRoutes(basePath: string, sourceUrl: string, config: IMarkdownMeta
       MarkdownService,
       {
         provide: DocsConfig,
-        useValue: hydrateMarkdownMeta(docsConfig, `/${basePath}`)
+        useValue: hydrateMarkdownMeta(docsConfig, `/${basePath}`, ghRoot)
       }
     ],
     resolve: {
@@ -43,14 +44,19 @@ function createRoutes(basePath: string, sourceUrl: string, config: IMarkdownMeta
   }));
 }
 
-console.log(createRoutes('docs', docsUrl, docsConfig));
+createRoutes('docs', docsUrl, docsConfig);
 
 const routes: Routes = [
   {
     path: '',
     component: FullPage
   },
-  ...createRoutes('docs', docsUrl, docsConfig)
+  ...createRoutes(
+    'docs',
+    docsUrl,
+    docsConfig,
+    'https://github.com/openworkers-org/openworkers-website/tree/master/docs'
+  )
 ];
 
 @NgModule({

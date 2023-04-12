@@ -10,7 +10,7 @@ export class MarkdownService {
   public getMarkdownMeta(url: string) {
     return this.http.get<IMarkdownMeta[]>(url).pipe(
       catchError((err) => {
-        console.warn(err);
+        console.warn('Error loading markdown meta', err);
         return of(null);
       })
     );
@@ -23,14 +23,14 @@ export class MarkdownService {
       })
       .pipe(
         catchError((err) => {
-          console.warn(err);
+          console.warn('Error loading markdown', err);
           return of('Error');
         })
       );
   }
 
   public resolveMarkdown(url: string): Observable<string> {
-    console.log(url);
+    console.log('Resolving markdown', url);
     return this.getMarkdown(url);
   }
 }
