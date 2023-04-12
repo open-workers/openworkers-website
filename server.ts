@@ -15,12 +15,7 @@ export function app(): express.Express {
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/main/modules/express-engine)
-  server.engine(
-    'html',
-    ngExpressEngine({
-      bootstrap: AppServerModule
-    })
-  );
+  server.engine('html', ngExpressEngine({ bootstrap: AppServerModule }));
 
   server.set('view engine', 'html');
   server.set('views', distFolder);

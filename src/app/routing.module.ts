@@ -32,7 +32,6 @@ function createRoutes(basePath: string, sourceUrl: string, config: IMarkdownMeta
     path: (basePath + path).replace(/\/index$/, ''),
     component: DocsPage,
     providers: [
-      MarkdownService,
       {
         provide: DocsConfig,
         useValue: hydrateMarkdownMeta(docsConfig, `/${basePath}`, ghRoot)

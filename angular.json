@@ -152,7 +152,14 @@
           "builder": "@nguniversal/builders:prerender",
           "options": {
             "routes": [
-              "/"
+              "/",
+              "/docs",
+              "/docs/start",
+              "/docs/runtime",
+              "/docs/examples/telegram",
+              "/docs/examples/qr-code",
+              "/docs/packages/redis-fetch",
+              "/docs/packages/redis-fetch-server"
             ]
           },
           "configurations": {
