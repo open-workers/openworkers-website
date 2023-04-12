@@ -10,7 +10,13 @@ import { DocsPage } from './components/docs/docs.page';
 
 @NgModule({
   declarations: [MainComponent, DocsPage],
-  imports: [BrowserModule, MainRoutingModule, CommonModule, HttpClientModule, RouterModule],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    MainRoutingModule,
+    CommonModule,
+    HttpClientModule,
+    RouterModule
+  ],
   bootstrap: [MainComponent]
 })
 export class MainModule {}
