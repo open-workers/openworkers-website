@@ -18,4 +18,4 @@ If you want to contribute to the OpenWorkers documentation, please read the [con
 
 ## License
 
-The OpenWorkers website is licensed under the [TODO License](LICENSE).
+The OpenWorkers website is licensed under the [CC BY-SA 4.0 / CC0 1.0 Universal](LICENSE).
