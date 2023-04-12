@@ -7,10 +7,18 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { DocsPage } from './components/docs/docs.page';
+import { MarkdownService } from './services/markdown.service';
 
 @NgModule({
+  providers: [MarkdownService],
   declarations: [MainComponent, DocsPage],
-  imports: [BrowserModule, MainRoutingModule, CommonModule, HttpClientModule, RouterModule],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    MainRoutingModule,
+    CommonModule,
+    HttpClientModule,
+    RouterModule
+  ],
   bootstrap: [MainComponent]
 })
 export class MainModule {}

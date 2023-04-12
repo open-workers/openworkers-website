@@ -26,15 +26,16 @@ jobs:
         run: sed -i "s/<BUILD_ID>/$(echo $GITHUB_SHA)/g" src/environments/environment.prod.ts
 
       - name: Build
-        run: npm run build
+        run: npm run prerender
 
+        # Copy index.html to 404.html to make sure that GitHub Pages will serve the app when a route is not found
       - name: Copy index.html to 404.html
         run: cp dist/app/index.html dist/app/404.html
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: dist/app/
+          path: dist/app/browser
 
   deploy:
     name: Deploy
