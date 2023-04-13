@@ -16,11 +16,15 @@
     "path": "examples",
     "children": [
       {
-        "name": "Telegram bot",
+        "name": "Poll App",
+        "path": "poll"
+      },
+      {
+        "name": "Telegram Bot",
         "path": "telegram"
       },
       {
-        "name": "QR code generator",
+        "name": "QR Code Generator",
         "path": "qr-code"
       }
     ]
