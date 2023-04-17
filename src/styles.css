@@ -10,30 +10,30 @@
 
 ::-webkit-scrollbar {
   height: 1rem;
-  width: .5rem
+  width: 0.5rem;
 }
 
 ::-webkit-scrollbar:horizontal {
-  height: .5rem;
-  width: 1rem
+  height: 0.5rem;
+  width: 1rem;
 }
 
 ::-webkit-scrollbar-track {
   background-color: transparent;
-  border-radius: 9999px
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb {
   --tw-border-opacity: 1;
-  background-color: rgba(217,217,227,.8);
-  border-color: rgba(255,255,255,var(--tw-border-opacity));
+  background-color: rgba(217, 217, 227, 0.8);
+  border-color: rgba(255, 255, 255, var(--tw-border-opacity));
   border-radius: 9999px;
-  border-width: 1px
+  border-width: 1px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   --tw-bg-opacity: 1;
-  background-color: rgba(236,236,241,var(--tw-bg-opacity))
+  background-color: rgba(236, 236, 241, var(--tw-bg-opacity));
 }
 
 @layer base {
@@ -103,18 +103,18 @@
 
 @layer utilities {
   nav .link {
-    @apply text-slate-700 hover:text-blue-500 ;
+    @apply text-slate-700 hover:text-blue-500;
   }
 
   nav .link.active {
     @apply text-blue-500;
   }
 
-  aside.menu  li > a {
+  aside.menu li > a {
     @apply rounded p-2 hover:bg-gray-100 hover:text-slate-800;
   }
 
-  aside.menu  li > a.active {
+  aside.menu li > a.active {
     @apply text-blue-500 font-semibold bg-blue-50;
   }
 
@@ -128,5 +128,31 @@
 
   * > .separator:nth-of-type(2) {
     @apply border-b;
+  }
+
+  .markdown-body h1,
+  .markdown-body h2,
+  .markdown-body h3,
+  .markdown-body h4,
+  .markdown-body h5,
+  .markdown-body h6 {
+    @apply border-b pb-1;
+    font-weight: var(--base-text-weight-semibold, 600);
+  }
+
+  .markdown-body > * {
+    @apply mb-4;
+  }
+
+  .markdown-body pre {
+    @apply text-sm;
+  }
+
+  .markdown-body pre > code {
+    @apply bg-slate-50 rounded;
+  }
+
+  .markdown-body a {
+    @apply text-blue-500 hover:underline;
   }
 }

@@ -146,7 +146,7 @@ async function insertVote(color: string) {
 // ...
 if (color === 'blue' || color === 'red' || color === 'green') {
   await insertVote(color); // Insert the vote into the database
-  return new Response(`You voted for ${color}!`, { headers: { 'Content-Type': 'text/plain' } });
+  return new Response(`You voted for ${color}!`);
 }
 // ...
 ```
@@ -189,7 +189,7 @@ async function getVotes() {
 if (color === 'blue' || color === 'red' || color === 'green') {
   await insertVote(color);
   const results = await getVotes();
-  const resultText = results.map(({ color, votes }) => ` ${color}: ${votes} votes`).join('\n');
+  const resultText = results.map(({ color, votes }) => ` ${color}: ${votes}`).join('\n');
   return new Response(`You voted for ${color}!\n\n${resultText}`);
 }
 // ...
