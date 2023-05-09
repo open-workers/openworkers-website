@@ -88,10 +88,8 @@
     background-color: var(--bg-primary);
   }
 
-  svg {
-    path {
-      @apply fill-current;
-    }
+  svg path {
+    @apply fill-current;
   }
 
   app-root {

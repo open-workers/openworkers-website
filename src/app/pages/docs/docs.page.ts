@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeStringify from 'rehype-stringify';
 import rehypeSlug from 'rehype-slug';
@@ -10,10 +10,11 @@ import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { ListNode, TextNode, ListItemNode } from 'rehype-toc';
-import { map, mergeMap, Observable, ReplaySubject, tap } from 'rxjs';
+import { map, mergeMap, Observable, ReplaySubject } from 'rxjs';
 import { unified } from 'unified';
 import { IHydrateMarkdownMeta } from '~/app/types/markdown';
 import { DocsConfig } from './tokens';
+import { CommonModule } from '@angular/common';
 
 interface TocItem {
   name: string;
@@ -67,7 +68,11 @@ function flattenConfig(config: IHydrateMarkdownMeta[]): IHydrateMarkdownMeta[] {
   }, []);
 }
 
-@Component({ templateUrl: './docs.page.html' })
+@Component({
+  templateUrl: './docs.page.html',
+  standalone: true,
+  imports: [CommonModule, RouterModule]
+})
 export class DocsPage {
   markdown$: Observable<SafeHtml>;
 
