@@ -1,15 +1,81 @@
-# Home
+# About OpenWorkers
 
 OpenWorkers is a serverless runtime environment that allows you to run your code without having to worry about the underlying infrastructure.
 
-## Subheading
+## Features
 
-This is a paragraph.
+- **Fast** - OpenWorkers is built on top of the javascript V8 engine.
+- **Secure** - Each worker runs in its own V8 isolate, which means that your code is isolated from other workers.
+- **Easy to use** - OpenWorkers is designed to be easy to use, so you can focus on writing your code while we take care of the rest.
 
-## Another subheading
+## Getting started
 
-This is another paragraph.
+To get started, you need to create an account. You can do this by clicking the "Login" button in the top right corner of the page.
 
-## A third subheading
+You will then be redirected to the login page. Login with your GitHub account.
 
-This is a third paragraph.
+After logging in, you will be redirected to the dashboard. Here you can see all your workers and create new ones.
+
+### Creating a worker
+
+To create a worker, click the "Create a worker" button in the top right corner of the page.
+
+Here you can enter the name of the worker and select a language template.
+
+The name of the worker must be unique and can only contain letters, numbers and dashes, it will be deployed to `https://<worker-name>.workers.rocks`.
+
+### Editing a worker
+
+To edit a worker, click the "Edit" button in worker overview page.
+
+Here you can edit the code of the worker.
+
+The default returns a "Hello World" html page.
+
+```typescript
+addEventListener('fetch', (event: FetchEvent) => {
+  event.respondWith(handleRequest(event.request).catch((err: Error) => new Response(err.stack, { status: 500 })));
+});
+
+// More examples available at: https://openworkers.com/docs
+async function handleRequest(request: Request): Promise<Response> {
+  const { pathname } = new URL(request.url);
+
+  // Return a 404 response for requests to /favicon.ico.
+  if (pathname.startsWith('/favicon.ico')) {
+    return new Response('Not found', { status: 404 });
+  }
+
+  // Return a JSON response for requests to /api containing the requested pathname.
+  if (pathname.startsWith('/api')) {
+    return new Response(JSON.stringify({ pathname }), {
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  // Return a HTML response for all other requests.
+  return new Response('<h3>Hello world!</h3>', {
+    headers: { 'Content-Type': 'text/html' }
+  });
+}
+```
+
+From now on, you can edit the code of the worker and it will be automatically deployed.
+
+### Environment variables
+
+You can set environment variables for your worker in the "Environment variables" tab.
+
+Environment variables are key-value pairs that are passed to your worker at runtime.
+
+They should be detected in the online editor.
+
+### Custom domains
+
+You can add a custom domain to your worker in the "Domains" section of the worker overview page.
+
+For example, for `example.com` to points to your worker, add `example.com` to the "Domains" section.
+
+Then, add a CNAME record to your DNS provider pointing to `workers.rocks`.
+
+Requests to `example.com` will now be routed to your worker.

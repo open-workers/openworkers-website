@@ -155,7 +155,7 @@
             "routes": [
               "/",
               "/docs",
-              "/docs/start",
+              "/docs/roadmap",
               "/docs/runtime",
               "/docs/examples/telegram",
               "/docs/examples/qr-code",

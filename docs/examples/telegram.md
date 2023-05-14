@@ -6,15 +6,11 @@ This example shows how to write a Telegram bot without using any module.
 
 ## Setup bot
 
-First of all, you need to create a bot. To do this, you need to talk to the
-[@BotFather](https://t.me/BotFather) bot and follow a few simple steps. After
-that, you will receive a token that you will need to use to interact with your
-bot.
+First of all, you need to create a bot. To do this, you need to talk to the [@BotFather](https://t.me/BotFather) bot and follow a few simple steps. After that, you will receive a token that you will need to use to interact with your bot.
 
 ## Setup environment variables
 
-In the OpenWorkers dashboard, go to the "Environment variables" tab and add
-the following variables:
+In the OpenWorkers dashboard, go to the "Environment variables" tab and add the following variables:
 
 ### Bot token
 
@@ -22,8 +18,7 @@ Set a variable named `BOT_TOKEN` with the token you received from the BotFather.
 
 ### Hook secret
 
-Set a variable named `HOOK_SECRET` with a random string. This will be used to
-verify that the request comes from Telegram.
+Set a variable named `HOOK_SECRET` with a random string. This will be used to verify that the request comes from Telegram.
 
 ## Getting updates
 
@@ -41,13 +36,11 @@ Now we can start writing our bot. To do this, we need to create a worker:
 
 ### Create a worker
 
-Go to the "Workers" tab and click "Create a worker". Enter the name of the
-worker and select the "TypeScript" template.
+Go to the "Workers" tab and click "Create a worker". Enter the name of the worker and select the "TypeScript" template.
 
 ### Bind the environment variables to the worker
 
-In the worker overview page, change the "Environment variables" to
-the one set up earlier.
+In the worker overview page, change the "Environment variables" to the one set up earlier.
 
 ### Handling requests
 
@@ -55,7 +48,11 @@ Go to the "Edit" tab and paste the code below into the editor to have a minimall
 
 ```typescript
 addEventListener('fetch', (event: FetchEvent) => {
-  event.respondWith(handleRequest(event.request).catch(() => new Response('Internal Server Error', { status: 500 })));
+  event.respondWith(
+    handleRequest(event.request)
+      // If the request handler throws an error, return a 500 response.
+      .catch(() => new Response('Internal Server Error', { status: 500 }))
+  );
 });
 
 function sendMessage(chatId: number, text: string): Promise<Response> {
