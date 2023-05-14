@@ -15,6 +15,7 @@ import { unified } from 'unified';
 import { IHydrateMarkdownMeta } from '~/app/types/markdown';
 import { DocsConfig } from './tokens';
 import { CommonModule } from '@angular/common';
+import { loginUrl } from '~/environment';
 
 interface TocItem {
   name: string;
@@ -74,6 +75,8 @@ function flattenConfig(config: IHydrateMarkdownMeta[]): IHydrateMarkdownMeta[] {
   imports: [CommonModule, RouterModule]
 })
 export class DocsPage {
+  public readonly loginUrl = loginUrl;
+
   markdown$: Observable<SafeHtml>;
 
   public readonly toc$: Observable<TocItem[] | null>;

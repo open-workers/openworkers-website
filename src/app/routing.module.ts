@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { DocsConfig } from './pages/docs/tokens';
 import docsConfig from '~/docs/meta.json';
 import { IHydrateMarkdownMeta, IMarkdownMeta } from './types/markdown';
-import { DocsPage } from './pages/docs/docs.page';
 import { MarkdownService } from './services/markdown.service';
 import { docsUrl } from '~/environments/environment';
 

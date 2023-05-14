@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
 :root {
   --color-primary: #1f2937;
   --border-color: #e5e7eb;
@@ -88,10 +90,6 @@
     background-color: var(--bg-primary);
   }
 
-  svg path {
-    @apply fill-current;
-  }
-
   app-root {
     height: 100vh;
     display: flex;
@@ -152,5 +150,22 @@
 
   .markdown-body a {
     @apply text-blue-500 hover:underline;
+  }
+
+  .container {
+    @apply flex mx-auto;
+    @apply px-2 xs:px-4 sm:px-6;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center;
+    @apply px-4 py-2;
+    @apply rounded-md;
+    @apply transition-colors duration-150;
+    @apply ease-in-out;
+  }
+
+  .btn-blue {
+    @apply bg-blue-500 text-white;
   }
 }
