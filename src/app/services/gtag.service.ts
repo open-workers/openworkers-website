@@ -14,7 +14,7 @@ const GTAG_ID = 'G-X7QPRFBML9';
 @Injectable()
 export class GtagService {
   constructor(@Inject(PLATFORM_ID) platform: object, router: Router) {
-    if (isPlatformServer(platform) || location.hostname === 'localhost') {
+    if (isPlatformServer(platform) || location.hostname !== 'openworkers.com') {
       return;
     }
 
