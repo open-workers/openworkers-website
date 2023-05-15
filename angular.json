@@ -157,6 +157,7 @@
               "/docs",
               "/docs/roadmap",
               "/docs/runtime",
+              "/docs/examples/poll",
               "/docs/examples/telegram",
               "/docs/examples/qr-code",
               "/docs/packages/redis-fetch",
