@@ -44,6 +44,7 @@
  * ]
  */
 export interface IMarkdownMeta {
+  external?: boolean; // External link - no children, no path, ghSource must be set
   name: string; // Title
   path: string; // Relative path
   ghSource?: string; // GitHub repository
@@ -52,7 +53,7 @@ export interface IMarkdownMeta {
 
 export interface IHydrateMarkdownMeta {
   name: string; // Title
-  path: string; // Full path
+  path?: string; // Full path
   ghSource?: string; // GitHub path to file (ghSource + path)
   children?: IHydrateMarkdownMeta[];
 }

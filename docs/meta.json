@@ -34,12 +34,16 @@
     "path": "packages",
     "children": [
       {
+        "external": true,
         "name": "redis-fetch",
-        "path": "redis-fetch"
+        "path": "redis-fetch",
+        "ghSource": "https://github.com/openworkers-org/redis-fetch/blob/main/README.md"
       },
       {
+        "external": true,
         "name": "redis-fetch-server",
-        "path": "redis-fetch-server"
+        "path": "redis-fetch-server",
+        "ghSource": "https://github.com/openworkers-org/redis-fetch-server/blob/main/README.md"
       }
     ]
   }

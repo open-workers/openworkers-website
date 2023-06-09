@@ -74,7 +74,7 @@ function flattenConfig(config: IHydrateMarkdownMeta[]): IHydrateMarkdownMeta[] {
   standalone: true,
   imports: [CommonModule, RouterModule]
 })
-export class DocsPage {
+export default class DocsPage {
   public readonly loginUrl = loginUrl;
 
   markdown$: Observable<SafeHtml>;
@@ -120,7 +120,7 @@ export class DocsPage {
     // Current config item.
     const config$ = route.url.pipe(
       map((url) => url.map((u) => u.path).join('/')),
-      map((url) => flattenConfig(config).find(({ path }) => path.includes(url)) ?? null)
+      map((url) => flattenConfig(config).find(({ path, ghSource }) => (path ?? ghSource ?? '').includes(url)) ?? null)
     );
 
     this.ghSource$ = config$.pipe(map((config) => config?.ghSource ?? null));
