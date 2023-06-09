@@ -26,6 +26,10 @@
       {
         "name": "QR Code Generator",
         "path": "qr-code"
+      },
+      {
+        "name": "S3 Proxy",
+        "path": "s3-proxy"
       }
     ]
   },
