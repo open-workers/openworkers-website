@@ -12,6 +12,10 @@
     "path": "runtime"
   },
   {
+    "name": "ChatGPT example prompt",
+    "path": "chat-gpt-prompt"
+  },
+  {
     "name": "Examples",
     "path": "examples",
     "children": [
