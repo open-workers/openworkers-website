@@ -18,7 +18,7 @@ function hydrateMarkdownMeta(meta: IMarkdownMeta[], parentPath: string, ghSource
     name,
     path: `${parentPath}/${path === 'index' ? '' : path}`,
     ghSource:
-      ghSource && (meta.external ? meta.ghSource : `${ghSource}/${parentPath}/${path}.md`)?.replace(/\/\//g, '/'),
+      ghSource && (meta.external ? meta.ghSource : `${ghSource}/${parentPath}/${path}.md`)?.replace(/!:\/\//g, '/'),
     children: children && hydrateMarkdownMeta(children, `${parentPath}/${path}`, ghSource)
   }));
 }
@@ -68,7 +68,11 @@ const routes: Routes = [
     path: '',
     loadComponent: () => import('./pages/main/main.page')
   },
-  ...createRoutes('docs', docsUrl, docsConfig, 'https://github.com/openworkers-org/openworkers-website/tree/master')
+  ...createRoutes('docs', docsUrl, docsConfig, 'https://github.com/openworkers-org/openworkers-website/tree/master'),
+  {
+    path: '**',
+    redirectTo: '/'
+  }
 ];
 
 @NgModule({

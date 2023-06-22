@@ -159,7 +159,6 @@
 
   .btn {
     @apply inline-flex items-center justify-center;
-    @apply px-4 py-2;
     @apply rounded-md;
     @apply transition-colors duration-150;
     @apply ease-in-out;
@@ -167,5 +166,18 @@
 
   .btn-blue {
     @apply bg-blue-500 text-white;
+  }
+
+  ul.list-checkmark li {
+    @apply flex items-center p-1;
+  }
+
+  ul.list-checkmark li::before {
+    @apply bg-green-600/10 text-green-600 h-6 w-6 rounded-full flex items-center justify-center mr-2;
+    content: ' ';
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCA2MCI+PHBhdGggc3Ryb2tlPSIjMTZhMzRhIiBzdHJva2Utd2lkdGg9IjEwIiBmaWxsPSJub25lIiBkPSJNOCAzMCBMMjMgNDUgNTMgMTUiLz48L3N2Zz4=');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
   }
 }

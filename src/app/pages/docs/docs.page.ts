@@ -123,6 +123,6 @@ export default class DocsPage {
       map((url) => flattenConfig(config).find(({ path, ghSource }) => (path ?? ghSource ?? '').includes(url)) ?? null)
     );
 
-    this.ghSource$ = config$.pipe(map((config) => config?.ghSource ?? null));
+    this.ghSource$ = config$.pipe(map((config) => (console.log({ config }), config?.ghSource ?? null)));
   }
 }

@@ -20,7 +20,6 @@ export class MarkdownService {
   }
 
   public resolveMarkdown(url: string): Observable<string> {
-    console.log('Resolving markdown', url);
     return this.getMarkdown(url);
   }
 }

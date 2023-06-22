@@ -15,9 +15,6 @@ import { resolve } from 'path';
       useValue: {
         resolveMarkdown(url: string) {
           const path = resolve(url.replace('/static/', ''));
-
-          console.log('Resolving markdown', path);
-
           return from(
             new Promise<string>((resolve) => {
               readFile(path, { encoding: 'utf8' }, (err, data) => resolve(err ? err.code ?? '' : data));

@@ -10,9 +10,9 @@ OpenWorkers is a serverless runtime environment that allows you to run your code
 
 ## Getting started
 
-To get started, you need to create an account. You can do this by clicking the "Login" button in the top right corner of the page.
+To get started, you need to create an account. You can do this by clicking the "Sign in" button in the top right corner of the page.
 
-You will then be redirected to the login page. Login with your GitHub account.
+You will then be redirected to the sign in page. Sign in with your GitHub account.
 
 After logging in, you will be redirected to the dashboard. Here you can see all your workers and create new ones.
 
