@@ -38,8 +38,6 @@ function extractMarkdownRoutes(config: IMarkdownMeta[], parentPath = ''): Map<st
 
 function createRoutes(basePath: string, sourceUrl: string, config: IMarkdownMeta[], ghRoot?: string): Routes {
   return Array.from(extractMarkdownRoutes(config)).map(([path, meta]) => {
-    console.log([path, meta]);
-
     return {
       path: (basePath + path).replace(/\/index$/, ''),
       loadComponent: () => import('./pages/docs/docs.page'),

@@ -32,10 +32,10 @@ export class GtagService {
     }
 
     gtag('js', new Date());
-    gtag('config', GTAG_ID);
+    gtag('config', GTAG_ID, { send_page_view: false });
 
     router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
-      .subscribe((event) => gtag('config', GTAG_ID, { page_path: event.urlAfterRedirects }));
+      .subscribe((event) => gtag('event', 'page_view', { page_path: event.urlAfterRedirects }));
   }
 }
