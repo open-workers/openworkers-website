@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Roboto:wght@100;300;400&display=swap');
 
 :root {
   --color-primary: #1f2937;
@@ -165,7 +165,8 @@
   }
 
   .btn-blue {
-    @apply bg-blue-500 text-white;
+    @apply text-white;
+    background-color: #057feb;
   }
 
   ul.list-checkmark li {
@@ -179,5 +180,18 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 50%;
+  }
+
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .title {
+    font-family: Inter, sans-serif;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r bg-clip-text text-transparent from-cyan-500 to-[#057feb];
   }
 }

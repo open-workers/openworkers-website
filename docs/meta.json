@@ -34,6 +34,10 @@
       {
         "name": "S3 Proxy",
         "path": "s3-proxy"
+      },
+      {
+        "name": "S3 Proxy with AWSv4",
+        "path": "s3-proxy-aws-v4"
       }
     ]
   },
