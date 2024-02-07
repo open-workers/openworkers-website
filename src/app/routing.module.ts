@@ -66,7 +66,7 @@ const routes: Routes = [
     path: '',
     loadComponent: () => import('./pages/main/main.page')
   },
-  ...createRoutes('docs', docsUrl, docsConfig, 'https://github.com/openworkers-org/openworkers-website/tree/master'),
+  ...createRoutes('docs', docsUrl, docsConfig, 'https://github.com/openworkers/openworkers-website/tree/master'),
   {
     path: '**',
     redirectTo: '/'
@@ -85,4 +85,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class MainRoutingModule {}
+export class MainRoutingModule { }

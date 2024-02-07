@@ -8,7 +8,7 @@ import { loginUrl, buildId } from '~/environment';
   templateUrl: './main.component.html'
 })
 export class MainComponent {
-  public readonly projectUrl = 'https://github.com/openworkers-org/openworkers-website/commit/';
+  public readonly projectUrl = 'https://github.com/openworkers/openworkers-website/commit/';
   public readonly loginUrl = loginUrl;
   public readonly buildId = buildId;
 
@@ -17,5 +17,5 @@ export class MainComponent {
     map(() => this.router.url === '/')
   );
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 }
