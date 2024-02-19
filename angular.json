@@ -113,12 +113,30 @@
             "sourceMap": true,
             "outputPath": "dist/server",
             "tsConfig": "tsconfig.ssr.json",
-            "main": "prerender.ts",
-            "optimization": {
-              "styles": false,
-              "scripts": true
+            "main": "prerender.ts"
+          },
+          "configurations": {
+            "development": {
+              "optimization": {
+                "styles": false,
+                "scripts": false
+              }
+            },
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": {
+                "styles": false,
+                "scripts": true
+              }
             }
-          }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
