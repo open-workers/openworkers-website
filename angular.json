@@ -103,6 +103,22 @@
           "options": {
             "buildTarget": "app:build"
           }
+        },
+        "ssr": {
+          "builder": "@angular-builders/custom-webpack:server",
+          "options": {
+            "customWebpackConfig": {
+              "path": "./webpack/webpack.extra.config.js"
+            },
+            "sourceMap": true,
+            "outputPath": "dist/server",
+            "tsConfig": "tsconfig.ssr.json",
+            "main": "prerender.ts",
+            "optimization": {
+              "styles": false,
+              "scripts": true
+            }
+          }
         }
       }
     }

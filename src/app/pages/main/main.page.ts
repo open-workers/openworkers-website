@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Optional } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
@@ -24,7 +24,7 @@ export default class MainPage {
 
   public readonly content = atob(parsed);
 
-  constructor(private http: HttpClient) {}
+  constructor(@Optional() private http: HttpClient) {}
 
   public async subscribe() {
     const form = this.newsletterForm;

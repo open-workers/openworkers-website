@@ -61,6 +61,6 @@ export const routes: Routes = [
   ...createRoutes('docs', docsUrl, docsConfig, 'https://github.com/openworkers/openworkers-website/tree/master'),
   {
     path: '**',
-    redirectTo: '/'
+    loadComponent: () => import('./pages/not-found/not-found.page')
   }
 ];

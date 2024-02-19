@@ -7,7 +7,11 @@
     "dev": "ng serve --host 127.0.0.1 --port 4300",
     "dev:prod": "ng serve --host 127.0.0.1 --port 4300 --configuration production",
     "start": "ng serve",
-    "build": "ng build --configuration production",
+    "build": "ng build && ng run app:ssr && npm run prerender",
+    "build:ssr": "ng run app:ssr",
+    "build:app": "ng build --configuration production",
+    "build:app:dev": "ng build --configuration development",
+    "prerender": "node dist/server/main.js",
     "watch": "ng build --watch --configuration development",
     "postinstall": "cd webpack && npm install",
     "clean": "rm -rf dist .angular node_modules webpack/node_modules"
