@@ -28,10 +28,6 @@ jobs:
       - name: Build
         run: npm run build
 
-        # Copy index.html to 404.html to make sure that GitHub Pages will serve the app when a route is not found
-      - name: Copy index.html to 404.html
-        run: cp dist/browser/index.html dist/browser/404.html
-
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
