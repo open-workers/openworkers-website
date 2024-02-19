@@ -54,7 +54,7 @@
           },
           "configurations": {
             "production": {
-              "sourceMap": true,
+              "sourceMap": false,
               "budgets": [
                 {
                   "type": "initial",
@@ -110,13 +110,13 @@
             "customWebpackConfig": {
               "path": "./webpack/webpack.extra.config.js"
             },
-            "sourceMap": true,
             "outputPath": "dist/server",
             "tsConfig": "tsconfig.ssr.json",
             "main": "prerender.ts"
           },
           "configurations": {
             "development": {
+              "sourceMap": true,
               "optimization": {
                 "styles": false,
                 "scripts": false
@@ -130,13 +130,13 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "sourceMap": false,
               "optimization": {
                 "styles": false,
                 "scripts": true
               }
             }
-          },
-          "defaultConfiguration": "production"
+          }
         }
       }
     }
