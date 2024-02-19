@@ -1,11 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { loginUrl, buildId } from '~/environment';
 
 @Component({
   selector: 'main',
-  templateUrl: './main.component.html'
+  standalone: true,
+  templateUrl: './main.component.html',
+  imports: [CommonModule, RouterOutlet, RouterModule]
 })
 export class MainComponent {
   public readonly projectUrl = 'https://github.com/openworkers/openworkers-website/commit/';
@@ -17,5 +20,5 @@ export class MainComponent {
     map(() => this.router.url === '/')
   );
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 }

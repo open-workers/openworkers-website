@@ -3,10 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { firstValueFrom, of } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { CardComponent } from '~/app/components/card/card.component';
 import { ConsoleComponent } from '~/app/components/console/console.component';
 import { loginUrl } from '~/environment';
+import { parsed } from './console.md';
 
 @Component({
   templateUrl: './main.page.html',
@@ -21,15 +22,7 @@ export default class MainPage {
 
   public readonly loginUrl = loginUrl;
 
-  public readonly content = `addEventListener("fetch", (event: FetchEvent) => {
-  event.respondWith(handleRequest(event.request))
-});
-
-async function handleRequest(request: Request) {
-  return new Response("Hello world", {
-    headers: { "Content-Type": "text/html" }
-  });
-}`;
+  public readonly content = atob(parsed);
 
   constructor(private http: HttpClient) {}
 

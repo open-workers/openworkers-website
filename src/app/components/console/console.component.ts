@@ -1,14 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-
-import rehypeHighlight from 'rehype-highlight';
-import rehypeStringify from 'rehype-stringify';
-import remarkBreaks from 'remark-breaks';
-import remarkGfm from 'remark-gfm';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import { unified } from 'unified';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'console',
@@ -28,31 +21,19 @@ export class ConsoleComponent implements OnChanges {
 
   public contentHtml?: SafeHtml;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer, route: ActivatedRoute) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['content']) {
       const content = changes['content'].currentValue as string;
 
-      this.lines = content.split('\n').map((_, index) => index + 1);
+      // We are parsing html here, pure luck that it works
+      this.lines = content
+        .split('\n')
+        .filter(Boolean)
+        .map((_, index) => index + 1);
 
-      const markdown = '```typescript\n' + content + '\n```';
-
-      const document = unified()
-        .use(remarkParse)
-        .use(remarkGfm)
-        .use(remarkBreaks)
-        .use(remarkRehype)
-        .use(rehypeHighlight)
-        .use(() => (tree) => {
-          tree.children[0] = (tree.children[0] as any).children[0]; // code
-
-          return tree;
-        })
-        .use(rehypeStringify)
-        .processSync(markdown);
-
-      this.contentHtml = this.sanitizer.bypassSecurityTrustHtml(document.toString());
+      this.contentHtml = this.sanitizer.bypassSecurityTrustHtml(content);
     }
   }
 }

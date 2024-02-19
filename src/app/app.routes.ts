@@ -1,10 +1,7 @@
-import { inject, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { DocsConfig } from './pages/docs/tokens';
-import docsConfig from '~/docs/meta.json';
-import { IHydrateMarkdownMeta, IMarkdownMeta } from './types/markdown';
-import { MarkdownService } from './services/markdown.service';
 import { docsUrl } from '~/environments/environment';
+import { docsConfig } from '~/docs/meta';
 
 function mergeMaps<T>(...maps: Map<string, T>[]): Map<string, T> {
   return maps.reduce(
@@ -48,12 +45,7 @@ function createRoutes(basePath: string, sourceUrl: string, config: IMarkdownMeta
         }
       ],
       resolve: {
-        document: () =>
-          inject(MarkdownService).resolveMarkdown(
-            meta.external
-              ? meta.ghSource!.replace('https://github.com', 'https://raw.githubusercontent.com').replace('/blob', '')
-              : `${sourceUrl}${path}.md`
-          )
+        document: meta.load ?? null
       }
     };
   });
@@ -61,7 +53,7 @@ function createRoutes(basePath: string, sourceUrl: string, config: IMarkdownMeta
 
 createRoutes('docs', docsUrl, docsConfig);
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/main/main.page')
@@ -72,17 +64,3 @@ const routes: Routes = [
     redirectTo: '/'
   }
 ];
-
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, {
-      scrollPositionRestoration: 'enabled',
-      initialNavigation: 'enabledBlocking',
-      onSameUrlNavigation: 'reload',
-      anchorScrolling: 'enabled',
-      scrollOffset: [0, 96]
-    })
-  ],
-  exports: [RouterModule]
-})
-export class MainRoutingModule { }

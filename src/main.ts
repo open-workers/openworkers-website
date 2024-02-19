@@ -1,7 +1,7 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { appConfig } from './app/app.config';
+import { MainComponent } from './app/main.component';
 
-import { MainModule } from './app/main.module';
-
-platformBrowserDynamic()
-  .bootstrapModule(MainModule)
-  .catch((err) => console.error(err));
+document.addEventListener('DOMContentLoaded', () => {
+  bootstrapApplication(MainComponent, appConfig).catch((err) => console.error(err));
+});
