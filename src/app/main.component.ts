@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
-import { filter, map } from 'rxjs';
-import { loginUrl, buildId } from '~/environment';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { Observable, map } from 'rxjs';
+import { buildId, loginUrl } from '~/environment';
+import { RouteDataService } from './services/route-data.service';
 
 @Component({
   selector: 'main',
@@ -15,10 +16,9 @@ export class MainComponent {
   public readonly loginUrl = loginUrl;
   public readonly buildId = buildId;
 
-  public readonly isMainPage$ = this.router.events.pipe(
-    filter((event) => event instanceof NavigationEnd),
-    map(() => this.router.url === '/')
-  );
+  public readonly staticNav$: Observable<any>;
 
-  constructor(private router: Router) {}
+  constructor(routeData: RouteDataService) {
+    this.staticNav$ = routeData.data$.pipe(map((data) => data.staticNav === true));
+  }
 }

@@ -1,4 +1,4 @@
-<nav class="w-full bg-white px-4" [ngClass]="(isMainPage$ | async) ? '' : 'fixed border-b shadow-sm'">
+<nav class="w-full bg-white px-4" [ngClass]="(staticNav$ | async) ? '' : 'fixed border-b shadow-sm'">
   <div class="container max-w-8xl h-16 justify-between items-center">
     <div class="flex gap-2 flex-1">
       <a routerLink="/">

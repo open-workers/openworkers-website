@@ -56,11 +56,13 @@ createRoutes('docs', docsUrl, docsConfig);
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/main/main.page')
+    loadComponent: () => import('./pages/main/main.page'),
+    data: { staticNav: true }
   },
   ...createRoutes('docs', docsUrl, docsConfig, 'https://github.com/openworkers/openworkers-website/tree/master'),
   {
     path: '**',
-    loadComponent: () => import('./pages/not-found/not-found.page')
+    loadComponent: () => import('./pages/not-found/not-found.page'),
+    data: { staticNav: true }
   }
 ];

@@ -9,7 +9,7 @@ declare global {
 
   interface IRouteData {
     // Layout
-    fullScreen?: boolean;
+    staticNav?: boolean;
 
     // Metadata
     title?: string;
