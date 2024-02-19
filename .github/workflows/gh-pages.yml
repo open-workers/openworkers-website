@@ -26,7 +26,7 @@ jobs:
         run: sed -i "s/<BUILD_ID>/$(echo $GITHUB_SHA)/g" src/environments/environment.prod.ts
 
       - name: Build
-        run: npm run prerender
+        run: npm run build
 
         # Copy index.html to 404.html to make sure that GitHub Pages will serve the app when a route is not found
       - name: Copy index.html to 404.html
