@@ -11,7 +11,7 @@ import { routes } from './app.routes';
 import { ViewportScroller } from '@angular/common';
 import { provideClientHydration } from '@angular/platform-browser';
 import { GtagService } from './services/gtag.service';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -28,7 +28,7 @@ export const appConfig: ApplicationConfig = {
       withEnabledBlockingInitialNavigation()
     ),
     provideClientHydration(),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     GtagService,
     {
       provide: APP_INITIALIZER,
