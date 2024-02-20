@@ -54,7 +54,7 @@
           },
           "configurations": {
             "production": {
-              "sourceMap": false,
+              "sourceMap": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -130,7 +130,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "sourceMap": false,
+              "sourceMap": true,
               "optimization": {
                 "styles": false,
                 "scripts": true
