@@ -10,7 +10,8 @@
             "extensions": [
                 "angular.ng-template",
                 "formulahendry.auto-rename-tag",
-                "esbenp.prettier-vscode"
+                "esbenp.prettier-vscode",
+                "bradlc.vscode-tailwindcss"
             ]
         }
     }
