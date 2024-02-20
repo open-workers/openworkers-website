@@ -31,6 +31,14 @@ const mkdirAsync = promisify(mkdir);
 
 const cache = new Map<string, string>();
 
+function removeAll<K extends keyof HTMLElementTagNameMap>(nodes: NodeListOf<HTMLElementTagNameMap[K]>) {
+  const elements = Array.from(nodes);
+
+  for (const element of elements) {
+    element.remove();
+  }
+}
+
 const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
@@ -38,12 +46,11 @@ const appConfig: ApplicationConfig = {
     {
       provide: BEFORE_APP_SERIALIZED,
       useFactory: (document: Document) => () => {
-        const styles = Array.from(document.head.querySelectorAll('style'));
-
         // Remove inlined "critical" styles
-        for (const style of styles) {
-          style.remove();
-        }
+        removeAll(document.head.querySelectorAll('style'));
+
+        // Remove noscript > link[rel="stylesheet"] elements
+        removeAll(document.head.querySelectorAll('noscript'));
 
         // Remove style imports and replace them with inlined styles
         const links = Array.from(document.head.querySelectorAll('link[rel="stylesheet"]'));
