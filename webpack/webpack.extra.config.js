@@ -1,4 +1,4 @@
-console.log('Using custom webpack config (./webpack.extra.config.js)\n');
+console.info('Using custom webpack config (webpack/webpack.extra.config.js)\n');
 
 export default {
   experiments: {
