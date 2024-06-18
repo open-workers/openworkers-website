@@ -19,7 +19,13 @@ interface ScheduledEvent {
 
 ## Scheduling a task
 
-To schedule a task, you need to listen for the `schedule` event. This event is triggered at the specified time or interval.
+To schedule a task, you must set a CRON expression or an interval for the task in the "Cron Triggers" worker configuration.
+
+![Environment variables](/assets/images/cron.png)
+
+## Handling the `schedule` event
+
+To handle a scheduled task, you need to listen for the `schedule` event. This event is triggered at the specified time or interval.
 
 ```typescript
 addEventListener('scheduled', (event: ScheduledEvent) => {
