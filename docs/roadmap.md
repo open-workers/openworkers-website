@@ -5,34 +5,29 @@
 - ### 0.1.0
 
   - [x] Basic functionalities
-  - [ ] Basic documentation
+  - [x] Basic documentation
 
 - ### 0.2.0
 
-  - [ ] Fully functional engine
-
+  - [x] Fully functional runtime
     - [x] Handle `fetch` events
     - [x] Implement console
     - [x] Implement setTimeout
     - [x] Implement setInterval
     - [x] Implement clearTimeout
     - [x] Implement clearInterval
-    - [ ] Implement fetch
+    - [x] Implement fetch
 
-  - [ ] Open source the engine
+  - [x] Open source the runtime [openworkers/openworkers-runtime](https://github.com/openworkers/openworkers-runtime)
 
 - ### 0.3.0
 
-  - [ ] Integrate [swc](https://swc.rs/) for native TypeScript support
-  - [ ] Implement crypto
+  - [x] Integrate [swc](https://swc.rs/) for native TypeScript support
+  - [x] Implement crypto
 
 - ### 0.4.0
 
-  - [ ] Handle `scheduled` events
-
-- ### 0.5.0
-
-  - [ ] Implement caching
+  - [x] Handle `scheduled` events
 
 ## Dashboard
 
@@ -46,10 +41,10 @@
 
 - ### 0.2.0
 
-  - [ ] Store last _n_ logs
+  - [x] Store last _n_ logs
   - [ ] Store last _n_ requests/responses
   - [ ] Store last _n_ errors
-  - [ ] Manage scheduled events
+  - [x] Manage scheduled events
 
 - ### 0.3.0
 
@@ -65,15 +60,15 @@
 
 - ### 0.6.0
 
-  - [ ] Deploy a Prisma database for each user
+  - [ ] Deploy serverless database on demand
   - [ ] Database management
 
 ## CLI
 
 - ### 0.1.0
 
-  - [ ] Login
-  - [ ] Manage worker
-  - [ ] Manage environment variables
-  - [ ] Set custom domains for workers
-  - [ ] Live logs
+  - [x] Login
+  - [x] Manage worker
+  - [x] Manage environment variables
+  - [x] Set custom domains for workers
+  - [x] Live logs

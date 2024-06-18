@@ -33,6 +33,37 @@ export const docsConfig: IMarkdownMeta[] = [
     load: md(() => import('./runtime.md'))
   },
   {
+    name: 'Custom domains',
+    path: 'custom-domains',
+    load: md(() => import('./custom-domains.md'))
+  },
+  {
+    name: 'Online editor',
+    path: 'online-editor',
+    load: md(() => import('./online-editor.md'))
+  },
+  {
+    name: 'Environment variables',
+    path: 'environment-variables',
+    load: md(() => import('./environment-variables.md'))
+  },
+  {
+    name: 'Workers',
+    path: 'workers',
+    children: [
+      {
+        name: 'Handle HTTP requests',
+        path: 'event-fetch',
+        load: md(() => import('./workers/event-fetch.md'))
+      },
+      {
+        name: 'Scheduled tasks',
+        path: 'scheduled-tasks',
+        load: md(() => import('./workers/event-scheduled.md'))
+      }
+    ]
+  },
+  {
     name: 'ChatGPT example prompt',
     path: 'chat-gpt-prompt',
     load: md(() => import('./chat-gpt-prompt.md'))

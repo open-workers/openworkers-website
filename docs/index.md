@@ -62,20 +62,3 @@ async function handleRequest(request: Request): Promise<Response> {
 
 From now on, you can edit the code of the worker and it will be automatically deployed.
 
-### Environment variables
-
-You can set environment variables for your worker in the "Environment variables" tab.
-
-Environment variables are key-value pairs that are passed to your worker at runtime.
-
-They should be detected in the online editor.
-
-### Custom domains
-
-You can add a custom domain to your worker in the "Domains" section of the worker overview page.
-
-For example, for `example.com` to points to your worker, add `example.com` to the "Domains" section.
-
-Then, add a CNAME record to your DNS provider pointing to `workers.rocks`.
-
-Requests to `example.com` will now be routed to your worker.

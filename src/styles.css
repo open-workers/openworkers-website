@@ -140,6 +140,24 @@
     @apply mb-4;
   }
 
+  /* TODO */
+  .markdown-body .task-list-item input[type='checkbox'] {
+    height: inherit;
+    padding-top: 0.5rem;
+  }
+
+  .markdown-body .task-list-item {
+    @apply my-2;
+  }
+
+  .markdown-body .task-list-item input {
+    @apply me-1;
+  }
+
+  .markdown-body .contains-task-list ul {
+    @apply ps-5;
+  }
+
   .markdown-body pre {
     @apply text-sm;
   }

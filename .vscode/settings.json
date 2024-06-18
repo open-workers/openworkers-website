@@ -1,6 +1,12 @@
 {
   "editor.formatOnSave": true,
-  "cSpell.words": ["Microtask", "postbuild", "Rehype", "roadmap"],
+  "cSpell.words": [
+    "mergeable",
+    "Microtask",
+    "postbuild",
+    "Rehype",
+    "roadmap"
+  ],
   "files.associations": {
     "styles.scss": "tailwindcss"
   },
